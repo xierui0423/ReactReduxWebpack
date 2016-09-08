@@ -1,0 +1,10 @@
+{
+  // Allow dev dependency for testing
+  "rules": {
+    "import/no-extraneous-dependencies": 0
+  },
+
+  "env": {
+    "mocha": true
+  }
+}
