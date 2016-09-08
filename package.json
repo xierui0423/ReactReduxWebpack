@@ -35,7 +35,7 @@
     "extends": "airbnb",
 
     "rules":{
-      "new-cap": [2, { "capIsNewExceptions": ["Map"] }]
+      "new-cap": [2, { "capIsNewExceptions": ["Map", "List"] }]
     }
   }
 }

@@ -17,5 +17,14 @@ describe('application logic', () => {
       expect(state).to.equal(Map());
       expect(nextState).to.equal(Map({ entries: List.of('topic1', 'topic2') }));
     });
+
+    it('convers the entries to immutable', () => {
+      const state = Map();
+      const entries = ['topic1', 'topic2'];
+      const nextState = setEntries(state, entries);
+
+      expect(state).to.equal(Map());
+      expect(nextState).to.equal(Map({ entries: List.of('topic1', 'topic2') }));
+    });
   });
 });
