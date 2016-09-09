@@ -110,39 +110,35 @@ describe('application logic', () => {
           winner: 'topic1',
         }));
     });
+
+    it('does nothing when there are not entries for next step', () => {
+      let state = Map();
+
+      state = next(state);
+
+      expect(state).to.equal(Map());
+    });
   });
 
   describe('vote', () => {
     it('creates a new tally for a new entry', () => {
-      const state = Map(
-        {
-          entries: List.of('topic3'),
-          vote: Map({ pair: List.of('topic1', 'topic2') }),
-        });
+      const state = Map({ pair: List.of('topic1', 'topic2') });
 
       const nextState = vote(state, 'topic2');
 
-      expect(nextState).to.equal(Map(
-        {
-          entries: List.of('topic3'),
-          vote: Map({ pair: List.of('topic1', 'topic2'), tally: Map({ topic2: 1 }) }),
-        }));
+      expect(nextState).to.equal(
+          Map({ pair: List.of('topic1', 'topic2'), tally: Map({ topic2: 1 }) })
+        );
     });
 
     it('increases vote for the entry with tally', () => {
-      const state = Map(
-        {
-          entries: List.of('topic3'),
-          vote: Map({ pair: List.of('topic1', 'topic2'), tally: Map({ topic2: 1 }) }),
-        });
+      const state = Map({ pair: List.of('topic1', 'topic2'), tally: Map({ topic2: 1 }) });
 
       const nextState = vote(state, 'topic2');
 
-      expect(nextState).to.equal(Map(
-        {
-          entries: List.of('topic3'),
-          vote: Map({ pair: List.of('topic1', 'topic2'), tally: Map({ topic2: 2 }) }),
-        }));
+      expect(nextState).to.equal(
+        Map({ pair: List.of('topic1', 'topic2'), tally: Map({ topic2: 2 }) })
+      );
     });
 
     it('does nothing when invalid entry name is given', () => {

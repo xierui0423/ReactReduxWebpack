@@ -4,6 +4,8 @@
 
 import { List, Map } from 'immutable';
 
+export const INITIAL_STATE = Map();
+
 function getWinner(voteState) {
   const [firstEntry, lastEntry] = voteState.get('pair', List.of('', '')).toArray();
 
@@ -26,18 +28,21 @@ export function setEntries(state, entries) {
 export function next(state) {
   const winner = getWinner(state.get('vote', Map()));
 
-  const entries = state.get('entries').concat(winner);
+  const entries = state.get('entries', List()).concat(winner);
 
   // We got the final winner, hooray!!
   if (entries.size === 1) {
     return state.remove('vote').remove('entries').set('winner', entries.first());
+  } else if (entries.isEmpty()) {
+    return state;
   }
+
 
   return state.merge({ vote: Map({ pair: entries.take(2) }), entries: entries.skip(2) });
 }
 
 export function vote(state, entry) {
-  if (!state.getIn(['vote', 'pair'], List()).contains(entry)) return state;
+  if (!state.get('pair', List()).contains(entry)) return state;
 
-  return state.updateIn(['vote', 'tally', entry], 0, val => val + 1);
+  return state.updateIn(['tally', entry], 0, val => val + 1);
 }
