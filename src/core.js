@@ -28,7 +28,7 @@ export function next(state) {
 
   const entries = state.get('entries').concat(winner);
 
-  // We got the final winner, hooray!
+  // We got the final winner, hooray!!
   if (entries.size === 1) {
     return state.remove('vote').remove('entries').set('winner', entries.first());
   }
