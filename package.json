@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node index.js",
     "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm run test -- --watch"
   },
@@ -29,14 +30,26 @@
     ]
   },
   "dependencies": {
-    "immutable": "^3.8.1"
+    "immutable": "^3.8.1",
+    "redux": "^3.6.0",
+    "socket.io": "^1.4.8"
   },
   "eslintConfig": {
     "extends": "airbnb",
-
-    "rules":{
-      "new-cap": [2, { "capIsNewExceptions": ["Map", "List"] }],
-      "linebreak-style": [2, "windows"]
+    "rules": {
+      "new-cap": [
+        2,
+        {
+          "capIsNewExceptions": [
+            "Map",
+            "List"
+          ]
+        }
+      ],
+      "linebreak-style": [
+        2,
+        "windows"
+      ]
     }
   }
 }
