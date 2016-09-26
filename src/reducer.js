@@ -4,7 +4,7 @@
 
 import { setEntries, next, vote, INITIAL_STATE } from './core.js';
 
-export default function reducer(state = INITIAL_STATE, action) {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'SET_ENTRIES':
       return setEntries(state, action.entries);
@@ -15,4 +15,4 @@ export default function reducer(state = INITIAL_STATE, action) {
     default:
       return state;
   }
-}
+};

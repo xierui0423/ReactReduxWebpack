@@ -6,7 +6,7 @@
 import Server from 'socket.io';
 
 export default function startServer(appStore) {
-  const io = new Server().attach(3000);
+  const io = new Server().attach(8090);
 
   appStore.subscribe(() => io.emit('state', appStore.getState().toJSON()));
 
