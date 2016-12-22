@@ -37,6 +37,14 @@
   "eslintConfig": {
     "extends": "airbnb",
     "rules": {
+      "indent": [
+        2,
+        4
+      ],
+      "react/jsx-indent": [
+        2,
+        4
+      ],
       "new-cap": [
         2,
         {
@@ -49,6 +57,12 @@
       "linebreak-style": [
         2,
         "windows"
+      ],
+      "react/no-unused-prop-types": [
+        0
+      ],
+      "import/prefer-default-export": [
+        0
       ]
     }
   }
